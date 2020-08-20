@@ -6,24 +6,35 @@ import sys
 a = []
 a.append(random.randint(1, 99))
 
-print(fg(0, 255, 0) + "Hello my Friend, Welcome to my Guess The Number game!\n" + fg.rs)
+print(fg(0, 255, 0) + "Hello my Friend, Welcome to Guess The Number game!\n" + fg.rs)
 
 temp = None
+zen = None
+
+def play_again(x):
+    if x == "y" or x == "yes" or x == "Yes" or x == "YES":
+        return True
+    elif x == "n" or x == "no" or x == "No" or x == "NO":
+        return False
 
 while True:
-    print(a)
     if temp == True:
-        again = input(fg(255,105,180) + "Would you like to play again? " + fg.rs)
-        if again == "n" or again == "no" or again == "No" or again == "N" or again == "NO":
-            print(fg(255,215,0) + "Good-bye! See you soon!" + fg.rs)
-            sys.exit()
-        elif again == "y" or again == "yes" or again == "Yes" or again == "Y" or again == "YES":
-            a.clear()
-            a.append(random.randint(1, 99))
-        else:
-            print(fg(255, 10, 10) + "Give a valid value you retard bastard!" + fg.rs)
-            sys.exit()
-        temp = False
+        while zen != True:
+            again = input(fg(255,105,180) + "Would you like to play again? " + fg.rs)
+            if again == 'quit':
+                sys.exit()
+            if play_again(again) == False:
+                print(fg(255,215,0) + "Good-bye! See you soon!" + fg.rs)
+                zen = False
+                sys.exit()
+            elif play_again(again) == True:
+                a.clear()
+                a.append(random.randint(1, 99))
+                zen = True
+            else:
+                print(fg(255, 10, 10) + "Give yes or no!" + fg.rs)
+            temp = False
+        zen = None
     ask = input("Try to guess the number between 1 and 99: ")
     if ask == "quit":
         print(fg(255,215,0) + "Good-bye! See you soon!" + fg.rs)
@@ -32,11 +43,11 @@ while True:
         n = int(ask)
         for i in range(len(a)):
             if n < a[i]:
-                print(fg(255,127,80) + "guess is low" + fg.rs)
+                print(fg(255,127,80) + "Guess is low" + fg.rs)
             elif n > a[i]:
-                print(fg(255,127,80) + "guess is high" + fg.rs)
+                print(fg(255,127,80) + "Guess is high" + fg.rs)
             elif n == a[i]:
-                print(fg(10, 255, 10) + "you guessed it!" + fg.rs)
+                print(fg(10, 255, 10) + "You guessed it!" + fg.rs)
                 temp = True
     else:
         if ask != "quit":
