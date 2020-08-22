@@ -10,6 +10,7 @@ print(fg(0, 255, 0) + "Hello my Friend, Welcome to Guess The Number game!\n" + f
 
 temp = None
 zen = None
+guess = 0
 
 def play_again(x):
     if x == "y" or x == "yes" or x == "Yes" or x == "YES":
@@ -35,6 +36,7 @@ while True:
                 print(fg(255, 10, 10) + "Give yes or no!" + fg.rs)
             temp = False
         zen = None
+    guess += 1
     ask = input("Try to guess the number between 1 and 99: ")
     if ask == "quit":
         print(fg(255,215,0) + "Good-bye! See you soon!" + fg.rs)
@@ -47,7 +49,8 @@ while True:
             elif n > a[i]:
                 print(fg(255,127,80) + "Guess is high" + fg.rs)
             elif n == a[i]:
-                print(fg(10, 255, 10) + "You guessed it!" + fg.rs)
+                print(fg(10, 255, 10) + "You guessed it in "+ str(guess) + " rounds!" + fg.rs)
+                guess = 0
                 temp = True
     else:
         if ask != "quit":
