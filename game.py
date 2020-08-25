@@ -3,7 +3,6 @@ import random
 from sty import fg, rs
 import sys
 
-
 def exitGame():
     print(fg(255,215,0) + "Good-bye! See you soon!" + fg.rs)
     sys.exit()
@@ -35,7 +34,6 @@ def getGuess():
         print(fg(255, 10, 10) + "You must give a number between 1 and 99!\n" + fg.rs)
         ask = getGuess()
         return ask
-
 
 def repeatGame():
     again = input(fg(255,105,180) + "Would you like to play again? " + fg.rs)
